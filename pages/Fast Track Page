@@ -1,0 +1,20 @@
+export default function FastTrackPage() {
+  return (
+    <div className="min-h-screen bg-white p-6 text-center">
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold mb-4">👑 NeuroHacker Fast-Track</h1>
+        <p className="text-lg mb-6">
+          Go all in with the complete system: includes everything in the toolkit plus 1:1 coaching, exclusive drops, and access to the private Discord.
+        </p>
+        <a
+          href="https://yourstorelink.com/fast-track"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block px-6 py-3 bg-black text-white rounded-2xl text-lg hover:bg-gray-800"
+        >
+          Buy for $499
+        </a>
+      </div>
+    </div>
+  );
+}
