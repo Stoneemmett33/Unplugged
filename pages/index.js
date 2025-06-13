@@ -1,79 +1,78 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export default function UnpluggedFocusLanding() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900 p-6">
-      <div className="max-w-5xl mx-auto text-center">
-        <div className="mb-12">
-          <Image
-            src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7"
-            alt="Focus illustration"
-            width={1200}
-            height={400}
-            className="rounded-2xl shadow-lg w-full object-cover"
-          />
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Header */}
+      <header className="sticky top-0 bg-white shadow-sm z-10 py-4">
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="text-xl font-bold">Unplugged Focus</div>
+          <Link href="#starter"><a className="px-5 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Get Started</a></Link>
         </div>
+      </header>
 
-        <h1 className="text-5xl font-extrabold mb-4 tracking-tight">🧠 Unplugged Focus</h1>
-        <p className="text-xl text-gray-700 mb-10">Your brain is cooked. Let’s reset it — dopamine detox style. 5 days, Gen Z-approved.</p>
+      {/* Hero */}
+      <section className="bg-white py-20">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h1 className="text-5xl font-extrabold mb-4">Escape the Dopamine Trap in Just 5 Days</h1>
+          <p className="text-xl mb-8 text-gray-700">A mobile-first, Gen Z-approved program designed for the fastest brain reset possible.</p>
+          <Link href="#starter">
+            <a className="inline-block px-8 py-4 bg-indigo-600 text-white rounded-lg text-lg hover:bg-indigo-700">Start for $9 →</a>
+          </Link>
+          <p className="mt-4 text-gray-500">Join over <strong>500+ people</strong> who’ve already reset!</p>
+        </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white rounded-2xl shadow-xl p-6 border hover:shadow-2xl transition hover:scale-105">
-            <Image
-              src="https://images.unsplash.com/photo-1589571894960-20bbe2828af7"
-              alt="Starter Pack"
-              width={400}
-              height={200}
-              className="rounded-xl mb-4"
-            />
-            <h2 className="text-2xl font-bold mb-2">🚀 Starter Pack</h2>
-            <p className="mb-4">Quick-start detox guide + aesthetic Notion tracker.</p>
-            <p className="font-bold text-lg">$9</p>
-            <button className="mt-4 px-4 py-2 rounded-2xl bg-black text-white hover:bg-gray-800">Get the Pack 🧃</button>
+      {/* Course Cards */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1 md:grid-cols-3">
+          {[
+            { id: 'starter', title: 'Starter Pack', price: '$9', copy: 'Quick-start detox + Notion tracker', link: '/starter-pack', img: 'https://images.unsplash.com/photo-1589571894960-20bbe2828af7' },
+            { id: 'toolkit', title: 'Focus Toolkit', price: '$49', copy: 'Full reset, AI prompts & extras', link: '/toolkit', img: 'https://images.unsplash.com/photo-1612831455543-878b8fdf4037' },
+            { id: 'fast-track', title: 'NeuroHacker', price: '$499', copy: 'Coaching, Discord & premium drops', link: '/fast-track', img: 'https://images.unsplash.com/photo-1592194996308-7b43878e84a6' },
+          ].map(({id, title, price, copy, link, img}) => (
+            <div key={id} className="bg-white rounded-lg shadow-md hover:shadow-xl transition p-6 flex flex-col">
+              <div className="relative h-40 mb-4">
+                <Image src={img} layout="fill" objectFit="cover" className="rounded-md" alt={title} />
+              </div>
+              <h2 className="text-2xl font-semibold mb-2">{title}</h2>
+              <p className="text-gray-600 mb-4 flex-grow">{copy}</p>
+              <div className="flex items-center justify-between">
+                <strong className="text-lg">{price}</strong>
+                <Link href={link}><a className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Buy Now</a></Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="bg-white py-16">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h3 className="text-3xl font-bold mb-4">Trusted by Students Everywhere</h3>
+          <div className="space-y-6">
+            {/* Repeat 3 testimonial cards */}
+            {['Alex', 'Jordan', 'Taylor'].map(name => (
+              <div key={name} className="bg-gray-50 rounded-lg p-6 shadow-inner">
+                <p className="italic">“This 5-day detox reset changed how I *feel* on my device. Game-changer.”</p>
+                <div className="mt-4 flex items-center justify-center space-x-3">
+                  <Image src="https://randomuser.me/api/portraits/lego/1.jpg" width={48} height={48} className="rounded-full" alt={name} />
+                  <span className="font-semibold">{name}</span>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="bg-white rounded-2xl shadow-xl p-6 border hover:shadow-2xl transition hover:scale-105">
-            <Image
-              src="https://images.unsplash.com/photo-1612831455543-878b8fdf4037"
-              alt="Focus Toolkit"
-              width={400}
-              height={200}
-              className="rounded-xl mb-4"
-            />
-            <h2 className="text-2xl font-bold mb-2">📦 Focus Toolkit</h2>
-            <p className="mb-4">Full reset plan, AI prompts, daily check-ins, and cool extras.</p>
-            <p className="font-bold text-lg">$49</p>
-            <button className="mt-4 px-4 py-2 rounded-2xl bg-black text-white hover:bg-gray-800">Level Up 🔋</button>
-          </div>
-          <div className="bg-white rounded-2xl shadow-xl p-6 border hover:shadow-2xl transition hover:scale-105">
-            <Image
-              src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6"
-              alt="Fast-Track"
-              width={400}
-              height={200}
-              className="rounded-xl mb-4"
-            />
-            <h2 className="text-2xl font-bold mb-2">👑 NeuroHacker Fast-Track</h2>
-            <p className="mb-4">Everything + 1:1 coaching, private Discord, & premium drops.</p>
-            <p className="font-bold text-lg">$499</p>
-            <button className="mt-4 px-4 py-2 rounded-2xl bg-black text-white hover:bg-gray-800">Go Beast Mode ⚡</button>
-          </div>
         </div>
+      </section>
 
-        <div className="bg-white rounded-2xl p-8 shadow-inner mb-12">
-          <h3 className="text-3xl font-bold mb-4">Why This Slaps:</h3>
-          <ul className="list-disc list-inside text-left max-w-xl mx-auto text-lg text-gray-700">
-            <li className="mb-2">📱 Designed for chaos brains & scroll fatigue</li>
-            <li className="mb-2">🤖 Uses AI to help you rewire your habits — fast</li>
-            <li className="mb-2">✨ No fluff. No lectures. Just a 5-day brain reset that hits</li>
-          </ul>
+      {/* Footer CTA */}
+      <footer className="fixed bottom-4 w-full px-6">
+        <div className="max-w-6xl mx-auto bg-indigo-600 text-white rounded-lg p-4 flex justify-between items-center shadow-lg">
+          <span>Start your reset today — only $9</span>
+          <a href="#starter" className="px-6 py-2 bg-white text-indigo-600 rounded-lg">Let’s Go →</a>
         </div>
-
-        <div className="mt-12">
-          <p className="text-xl font-semibold mb-4">Join the dopamine rebellion 🧬</p>
-          <button className="px-6 py-3 rounded-2xl bg-black text-white text-xl hover:bg-gray-800">Let’s Detox 🧼</button>
-          <p className="text-sm text-gray-500 mt-3 italic">💬 243 people reset their brains this week</p>
-        </div>
-      </div>
+      </footer>
     </div>
   );
 }
